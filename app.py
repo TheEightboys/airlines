@@ -40,12 +40,14 @@ df = load_data()
 def get_logo_path(airline_name):
     """Find the logo file for an airline, checking multiple extensions"""
     logo_dir = os.path.join(os.path.dirname(__file__), LOGO_FOLDER)
+    # Replace spaces with underscores for filename lookup
+    safe_name = airline_name.replace(' ', '_')
     for ext in ['.png', '.jpg', '.jpeg', '.gif', '.svg']:
-        filename = f"{airline_name}{ext}"
+        filename = f"{safe_name}{ext}"
         if os.path.exists(os.path.join(logo_dir, filename)):
             return f'/static/logos/{filename}'
     # Return default placeholder if no logo found
-    return f'/static/logos/{airline_name}.png'
+    return f'/static/logos/{safe_name}.png'
 
 
 def get_airline_delays():
