@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מערכת המלצות טיסות | Flight Recommendation System</title>
+    <meta name="description" content="מערכת חכמה להמלצת חברות תעופה לפי ממוצע עיכובים - טסו בזמן!">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-gradient"></div>
+    <div class="clouds">
+        <div class="cloud cloud-1"></div>
+        <div class="cloud cloud-2"></div>
+        <div class="cloud cloud-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">✈️</span>
+                <span class="logo-text">FlightAI</span>
+            </div>
+            <div class="nav-links">
+                <a href="#landing" class="nav-link active" data-page="landing">בית</a>
+                <a href="#app" class="nav-link" data-page="app">חיפוש טיסות</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Landing Page Section -->
+    <section id="landing" class="page active">
+        <div class="landing-container">
+            <!-- Hero Section -->
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="title-line">מצאו את חברת התעופה</span>
+                        <span class="title-line highlight">הדייקנית ביותר</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        מערכת חכמה המבוססת על ניתוח נתוני עיכובים היסטוריים, 
+                        שתעזור לכם לבחור את חברת התעופה הטובה ביותר ליעד שלכם
+                    </p>
+                    <button class="btn-primary start-btn" onclick="navigateToApp()">
+                        <span>התחל חיפוש</span>
+                        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="hero-visual">
+                    <div class="plane-animation">
+                        <div class="plane">✈️</div>
+                        <div class="trail"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>ניתוח נתונים</h3>
+                    <p>מבוסס על מאגר נתונים מקיף של עיכובי טיסות</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>המלצות מדויקות</h3>
+                    <p>3 חברות התעופה הטובות ביותר לכל יעד</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>38 יעדים</h3>
+                    <p>כיסוי מלא של כל היעדים מישראל</p>
+                </div>
+            </div>
+
+            <!-- Regulations Section -->
+            <div class="regulations-section">
+                <h2 class="section-title">מידע חשוב</h2>
+                <div class="regulations-content">
+                    <div class="regulation-card">
+                        <h4>📋 אודות המערכת</h4>
+                        <p>
+                            <!-- PLACEHOLDER: Replace with Hebrew regulations text -->
+                            מערכת זו מספקת המלצות על בסיס נתוני עיכובים היסטוריים בלבד. 
+                            ההמלצות אינן מהוות ערובה לביצועים עתידיים ומומלץ לבדוק מידע נוסף לפני קבלת החלטה.
+                        </p>
+                    </div>
+                    <div class="regulation-card">
+                        <h4>⚠️ הבהרה משפטית</h4>
+                        <p>
+                            <!-- PLACEHOLDER: Replace with Hebrew regulations text -->
+                            המידע המוצג באתר זה הינו למטרות מידע כללי בלבד ואינו מהווה ייעוץ מקצועי. 
+                            השימוש במידע הוא על אחריות המשתמש בלבד.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Section (Search & Results) -->
+    <section id="app" class="page">
+        <div class="app-container">
+            <div class="search-section">
+                <h2 class="search-title">בחר יעד לחיפוש</h2>
+                <p class="search-subtitle">בחרו את מדינת היעד ונמצא עבורכם את חברות התעופה עם העיכובים הנמוכים ביותר</p>
+                
+                <div class="search-box">
+                    <div class="select-wrapper">
+                        <select id="destination-select" class="destination-dropdown">
+                            <option value="">-- בחר יעד --</option>
+                        </select>
+                        <div class="select-arrow">▼</div>
+                    </div>
+                    <button id="search-btn" class="btn-search" onclick="searchAirlines()">
+                        <span>חפש</span>
+                        <span class="search-icon">🔍</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loading" class="loading-state hidden">
+                <div class="loader">
+                    <div class="plane-loader">✈️</div>
+                </div>
+                <p>מחפש את ההמלצות הטובות ביותר...</p>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results" class="results-section hidden">
+                <div class="results-header">
+                    <h3 id="results-title">המלצות עבור <span class="destination-name"></span></h3>
+                    <p id="results-message" class="results-message"></p>
+                </div>
+                
+                <div id="airline-cards" class="airline-cards">
+                    <!-- Cards will be dynamically inserted here -->
+                </div>
+
+                <button id="reset-btn" class="btn-reset" onclick="resetSearch()">
+                    <span class="reset-icon">🔄</span>
+                    <span>חיפוש חדש</span>
+                </button>
+            </div>
+
+            <!-- No Results State -->
+            <div id="no-results" class="no-results hidden">
+                <div class="no-results-icon">😕</div>
+                <h3>לא נמצאו תוצאות</h3>
+                <p id="no-results-message"></p>
+                <button class="btn-secondary" onclick="resetSearch()">נסה שוב</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>© 2024 FlightAI - מערכת המלצות טיסות חכמה</p>
+            <p class="footer-note">הנתונים מבוססים על מחקר היסטורי של עיכובי טיסות</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/static/js/animations.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
