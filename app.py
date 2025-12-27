@@ -37,6 +37,17 @@ df = load_data()
 
 
 
+def get_logo_path(airline_name):
+    """Find the logo file for an airline, checking multiple extensions"""
+    logo_dir = os.path.join(os.path.dirname(__file__), LOGO_FOLDER)
+    for ext in ['.png', '.jpg', '.jpeg', '.gif', '.svg']:
+        filename = f"{airline_name}{ext}"
+        if os.path.exists(os.path.join(logo_dir, filename)):
+            return f'/static/logos/{filename}'
+    # Return default placeholder if no logo found
+    return f'/static/logos/{airline_name}.png'
+
+
 def get_airline_delays():
     """Extract airline delay data as a dictionary"""
     delays = {}
@@ -77,7 +88,7 @@ def get_airlines_for_destination(destination):
                 flying_airlines.append({
                     'name': col,
                     'delay': airline_delays[col],
-                    'logo': f'/static/logos/{col}.png'
+                    'logo': get_logo_path(col)
                 })
         except:
             continue
