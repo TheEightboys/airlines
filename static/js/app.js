@@ -188,9 +188,10 @@ function displayResults(data) {
         window.FlightAnimations.animateShowResults();
     }
 
-    // Disable dropdown while showing results
+    // Disable dropdown and search, show reset button
     document.getElementById('destination-select').disabled = true;
-    document.getElementById('search-btn').disabled = true;
+    document.getElementById('search-btn').classList.add('hidden');
+    showElement('reset-btn');
 }
 
 /**
@@ -254,7 +255,9 @@ async function resetSearch() {
     select.value = '';
     select.disabled = false;
 
-    // Re-enable search button
+    // Hide reset button, show search button
+    hideElement('reset-btn');
+    document.getElementById('search-btn').classList.remove('hidden');
     updateSearchButton();
 
     // Animate dropdown

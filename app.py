@@ -109,11 +109,19 @@ def index():
 
 @app.route('/api/destinations')
 def get_destinations():
-    """Get list of all available destinations"""
-    destinations = df[COL_DESTINATIONS].dropna().unique().tolist()
+    """Get list of all available destinations that have airline data"""
+    all_destinations = df[COL_DESTINATIONS].dropna().unique().tolist()
+    
+    # Filter to only include destinations with at least one airline with delay data
+    valid_destinations = []
+    for dest in all_destinations:
+        airlines = get_airlines_for_destination(dest)
+        if airlines and len(airlines) > 0:
+            valid_destinations.append(dest)
+    
     return jsonify({
         'success': True,
-        'destinations': destinations
+        'destinations': valid_destinations
     })
 
 
