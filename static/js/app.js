@@ -4,7 +4,7 @@
  */
 
 // Configuration
-const API_BASE = 'https://airlines-4g1k.onrender.com';  // Render backend URL
+const API_BASE = '';  // Local development - use relative URLs
 
 // State
 let currentDestination = null;

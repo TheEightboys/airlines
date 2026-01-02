@@ -119,6 +119,9 @@ def get_destinations():
         if airlines and len(airlines) > 0:
             valid_destinations.append(dest)
     
+    # Sort destinations alphabetically for consistent ordering
+    valid_destinations.sort()
+    
     return jsonify({
         'success': True,
         'destinations': valid_destinations
