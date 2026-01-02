@@ -125,9 +125,12 @@ def get_destinations():
     })
 
 
+from urllib.parse import unquote
+
 @app.route('/api/recommend/<destination>')
 def get_recommendations(destination):
     """Get top 3 airlines with lowest delays for a destination"""
+    destination = unquote(destination)
     airlines = get_airlines_for_destination(destination)
     
     if airlines is None:
