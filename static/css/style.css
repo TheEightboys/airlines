@@ -13,43 +13,45 @@
     --secondary-dark: #0f172a;
     --accent: #f97316;
     --accent-light: #fb923c;
-    
+
     /* Backgrounds */
     --bg-gradient-start: #f0f9ff;
     --bg-gradient-end: #e0f2fe;
     --card-bg: rgba(255, 255, 255, 0.85);
     --glass-bg: rgba(255, 255, 255, 0.25);
-    
+
     /* Text */
     --text-primary: #0f172a;
     --text-secondary: #475569;
     --text-muted: #94a3b8;
     --text-light: #ffffff;
-    
+
     /* Shadows */
     --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-    
+
     /* Borders */
     --border-radius-sm: 8px;
     --border-radius-md: 12px;
     --border-radius-lg: 20px;
     --border-radius-full: 9999px;
-    
+
     /* Transitions */
     --transition-fast: 150ms ease;
     --transition-normal: 300ms ease;
     --transition-slow: 500ms ease;
-    
+
     /* Spacing */
     --container-max: 1200px;
     --section-padding: 80px;
 }
 
 /* === Reset & Base === */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -246,7 +248,7 @@ body {
 
 .plane {
     font-size: 6rem;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.15));
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
 }
 
 .trail {
@@ -486,8 +488,15 @@ body {
 }
 
 @keyframes fly {
-    0%, 100% { transform: translateX(-20px) translateY(0); }
-    50% { transform: translateX(20px) translateY(-10px); }
+
+    0%,
+    100% {
+        transform: translateX(-20px) translateY(0);
+    }
+
+    50% {
+        transform: translateX(20px) translateY(-10px);
+    }
 }
 
 .loading-state p {
@@ -625,7 +634,7 @@ body {
     background: white;
     border-radius: var(--border-radius-sm);
     padding: 8px;
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .airline-logo img {
@@ -735,20 +744,20 @@ body {
         text-align: center;
         gap: 40px;
     }
-    
+
     .hero-subtitle {
         max-width: 100%;
     }
-    
+
     .hero-visual {
         order: -1;
     }
-    
+
     .features {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .regulations-content {
         grid-template-columns: 1fr;
     }
@@ -758,82 +767,87 @@ body {
     :root {
         --section-padding: 40px;
     }
-    
+
     .navbar {
         padding: 12px 16px;
     }
-    
+
     .logo {
         font-size: 1.25rem;
     }
-    
+
     .logo-icon {
         font-size: 1.5rem;
     }
-    
+
     .nav-links {
         gap: 16px;
     }
-    
+
     .nav-link {
         padding: 6px 12px;
         font-size: 0.875rem;
     }
-    
+
     .hero-title {
         font-size: 2.25rem;
     }
-    
+
     .hero-subtitle {
         font-size: 1rem;
     }
-    
+
     .plane {
         font-size: 4rem;
     }
-    
+
     .btn-primary {
         padding: 14px 32px;
         font-size: 1rem;
     }
-    
+
     .search-title {
         font-size: 1.75rem;
     }
-    
+
     .search-box {
         flex-direction: column;
     }
-    
+
     .select-wrapper {
         width: 100%;
         min-width: auto;
     }
-    
+
     .btn-search {
         width: 100%;
         justify-content: center;
     }
-    
+
     .airline-card {
-        grid-template-columns: auto 1fr;
-        padding: 20px;
+        grid-template-columns: auto 1fr auto;
+        padding: 16px;
+        gap: 12px;
     }
-    
+
     .airline-logo {
-        display: none;
-    }
-    
-    .airline-rank {
+        display: flex;
         width: 50px;
-        height: 50px;
-        font-size: 1.25rem;
+        height: 40px;
+        min-width: 50px;
+        padding: 4px;
     }
-    
+
+    .airline-rank {
+        width: 40px;
+        height: 40px;
+        font-size: 1.125rem;
+    }
+
     .airline-name {
         font-size: 1.125rem;
     }
-    
+
     .delay-value {
         font-size: 1.5rem;
     }
@@ -843,15 +857,15 @@ body {
     .hero-title {
         font-size: 1.75rem;
     }
-    
+
     .feature-card {
         padding: 24px;
     }
-    
+
     .feature-icon {
         font-size: 2rem;
     }
-    
+
     .regulation-card {
         padding: 24px;
     }

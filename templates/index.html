@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>מערכת המלצות טיסות | Flight Recommendation System</title>
     <meta name="description" content="מערכת חכמה להמלצת חברות תעופה לפי ממוצע עיכובים - טסו בזמן!">
-    
+
     <!-- Fonts -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✈️</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Styles -->
     <link rel="stylesheet" href="/static/css/style.css">
-    
+
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
+
 <body>
     <!-- Background Elements -->
     <div class="bg-gradient"></div>
@@ -52,13 +57,14 @@
                         <span class="title-line highlight">הדייקנית ביותר</span>
                     </h1>
                     <p class="hero-subtitle">
-                        מערכת חכמה המבוססת על ניתוח נתוני עיכובים היסטוריים, 
+                        מערכת חכמה המבוססת על ניתוח נתוני עיכובים היסטוריים,
                         שתעזור לכם לבחור את חברת התעופה הטובה ביותר ליעד שלכם
                     </p>
                     <button class="btn-primary start-btn" onclick="navigateToApp()">
                         <span>התחל חיפוש</span>
                         <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
                         </svg>
                     </button>
                 </div>
@@ -97,7 +103,7 @@
                         <h4>📋 אודות המערכת</h4>
                         <p>
                             <!-- PLACEHOLDER: Replace with Hebrew regulations text -->
-                            מערכת זו מספקת המלצות על בסיס נתוני עיכובים היסטוריים בלבד. 
+                            מערכת זו מספקת המלצות על בסיס נתוני עיכובים היסטוריים בלבד.
                             ההמלצות אינן מהוות ערובה לביצועים עתידיים ומומלץ לבדוק מידע נוסף לפני קבלת החלטה.
                         </p>
                     </div>
@@ -105,7 +111,7 @@
                         <h4>⚠️ הבהרה משפטית</h4>
                         <p>
                             <!-- PLACEHOLDER: Replace with Hebrew regulations text -->
-                            המידע המוצג באתר זה הינו למטרות מידע כללי בלבד ואינו מהווה ייעוץ מקצועי. 
+                            המידע המוצג באתר זה הינו למטרות מידע כללי בלבד ואינו מהווה ייעוץ מקצועי.
                             השימוש במידע הוא על אחריות המשתמש בלבד.
                         </p>
                     </div>
@@ -120,7 +126,7 @@
             <div class="search-section">
                 <h2 class="search-title">בחר יעד לחיפוש</h2>
                 <p class="search-subtitle">בחרו את מדינת היעד ונמצא עבורכם את חברות התעופה עם העיכובים הנמוכים ביותר</p>
-                
+
                 <div class="search-box">
                     <div class="select-wrapper">
                         <select id="destination-select" class="destination-dropdown">
@@ -149,7 +155,7 @@
                     <h3 id="results-title">המלצות עבור <span class="destination-name"></span></h3>
                     <p id="results-message" class="results-message"></p>
                 </div>
-                
+
                 <div id="airline-cards" class="airline-cards">
                     <!-- Cards will be dynamically inserted here -->
                 </div>
@@ -182,4 +188,5 @@
     <script src="/static/js/animations.js"></script>
     <script src="/static/js/app.js"></script>
 </body>
+
 </html>
